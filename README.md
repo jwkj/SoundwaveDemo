@@ -4,4 +4,4 @@
 
 >截图
 
-![](img_url)
+![](https://github.com/jwkj/SoundwaveDemo/blob/master/demo.gif)
