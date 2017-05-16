@@ -43,8 +43,7 @@
         android:layout_height="wrap_content"
         android:background="#1000"
         android:hint="请输入wifi密码"
-        android:padding="5dp"
-        android:text="29088360" />
+        android:padding="5dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -67,8 +66,8 @@
         <TextView
             android:id="@+id/tv_log"
             android:layout_width="match_parent"
-            android:text="log console ："
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="log console ：" />
     </ScrollView>
 
 </LinearLayout>
