@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#添加忽略文件
+-libraryjars libs/EMTMFSDK_0101_160914.jar
+-dontwarn com.lsemtmf.**
+-keep class com.lsemtmf.**{*; }
+-dontwarn com.larksmart.**
+-keep class com.larksmart.**{*; }
