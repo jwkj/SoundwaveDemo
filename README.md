@@ -1,5 +1,96 @@
 ## 声波配网demo
 
+### 配置
+
+**Step 1.** Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Step 2.** Add the dependency
+
+```
+dependencies {
+        compile 'com.github.huangdali:SoundWaveLib:v1.2.3'
+}
+```
+
+### 忽略文件
+
+添加忽略文件(app/proguard-rules.pro)
+```
+-libraryjars libs/EMTMFSDK_0101_160914.jar
+-dontwarn com.lsemtmf.**
+-keep class com.lsemtmf.**{*; }
+-dontwarn com.larksmart.**
+-keep class com.larksmart.**{*; }
+```
+
+
+
+#### 初始化
+
+ 在发送广播之前需要先初始化，建议在发送广播的前2s之前初始化，所以建议在发送广播的上一个配置也就初始化（见demo）
+
+ ```
+ SoundWaveManager.init(this);//初始化声波配置
+ ```
+
+在初始化页销毁的时候,需要将声波管理器销毁以节省系统资源
+
+```
+   /**
+     * 销毁的时候也要及时销毁
+     */
+    @Override
+    protected void onDestroy() {
+        SoundWaveManager.onDestroy(this);
+    }
+```
+#### 发送声波
+
+```
+  SoundWaveSender.getInstance()
+                .with(this)//不要忘记写哦
+                .setWifiSet(wifiSSID, wifiPwd)//wifi名字和wifi密码
+                .send(new ResultCallback() {
+                  /**
+                    *拿到结果的时候会回调（温馨提示：由于设备的重发机制，可能会收到多条重复数据，需自己处理哦）
+                    */
+                    @Override
+                    public void onNext(UDPResult udpResult) {
+                      //get result
+                    }
+                   /**
+                     * 声波发送失败的时候会回调
+                     */
+                    @Override
+                    public void onError(Throwable throwable) {
+                        //发生错误的时候需要处理一下，一般是先关闭声波发送，再重发
+                    }
+
+                    /**
+                     * 当声波停止的时候
+                     */
+                    @Override
+                    public void onStopSend() {
+                       //当声波播放完成的时候会回调，此时如果还没拿到结果，那么建议在此处重新发送声波
+                    }
+                });
+```
+
+#### 关闭声波发送
+
+```
+SoundWaveSender.getInstance().stopSend();
+```
 
 >截图
 

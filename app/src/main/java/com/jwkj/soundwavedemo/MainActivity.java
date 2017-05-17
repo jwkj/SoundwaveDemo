@@ -78,39 +78,41 @@ public class MainActivity extends AppCompatActivity {
      * 开始发送声波
      */
     private void sendSoundWave() {
-        SoundWaveSender.getInstance().with(this).setWifiSet(wifiSSID, wifiPwd).send(new ResultCallback() {
+        SoundWaveSender.getInstance()
+                .with(this)
+                .setWifiSet(wifiSSID, wifiPwd)
+                .send(new ResultCallback() {
 
-            @Override
-            public void onNext(UDPResult udpResult) {
-//                ELog.e(udpResult.toString());
-                NearbyDevice device = NearbyDevice.getDeviceInfoByByteArray(udpResult.getResultData());
-                device.setIp(udpResult.getIp());
-                ELog.e(device.toString());
-                tvLog.append("\n设备联网成功：（设备信息）" + device.toString());
-                isNeedSendWave = false;
-            }
+                    @Override
+                    public void onNext(UDPResult udpResult) {
+                        NearbyDevice device = NearbyDevice.getDeviceInfoByByteArray(udpResult.getResultData());
+                        device.setIp(udpResult.getIp());
+                        ELog.e(device.toString());
+                        tvLog.append("\n设备联网成功：（设备信息）" + device.toString());
+                        isNeedSendWave = false;
+                    }
 
-            @Override
-            public void onError(Throwable throwable) {
-                super.onError(throwable);
-                ELog.e(""+throwable);
-                SoundWaveSender.getInstance().stopSend();//出错了就要停止任务，然后重启发送
-                sendSoundWave();
-            }
+                    @Override
+                    public void onError(Throwable throwable) {
+                        super.onError(throwable);
+                        ELog.e("" + throwable);
+                        SoundWaveSender.getInstance().stopSend();//出错了就要停止任务，然后重启发送
+                        sendSoundWave();
+                    }
 
-            /**
-             * 当声波停止的时候
-             */
-            @Override
-            public void onStopSend() {
-                if (isNeedSendWave) {//是否需要继续发送声波
-                    tvLog.append("\n继续发送声波...");
-                    sendSoundWave();
-                } else {//结束了就需要将发送器关闭
-                    SoundWaveSender.getInstance().stopSend();
-                }
-            }
-        });
+                    /**
+                     * 当声波停止的时候
+                     */
+                    @Override
+                    public void onStopSend() {
+                        if (isNeedSendWave) {//是否需要继续发送声波
+                            tvLog.append("\n继续发送声波...");
+                            sendSoundWave();
+                        } else {//结束了就需要将发送器关闭
+                            SoundWaveSender.getInstance().stopSend();
+                        }
+                    }
+                });
     }
 
     /**
