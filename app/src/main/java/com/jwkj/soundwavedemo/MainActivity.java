@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         ELog.e(device.toString());
                         tvLog.append("\n设备联网成功：（设备信息）" + device.toString());
                         isNeedSendWave = false;
+                        SoundWaveSender.getInstance().stopSend();//收到数据之后，需要发送
                     }
 
                     @Override
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                         super.onError(throwable);
                         ELog.e("" + throwable);
                         SoundWaveSender.getInstance().stopSend();//出错了就要停止任务，然后重启发送
-                        sendSoundWave();
                     }
 
                     /**
