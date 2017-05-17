@@ -18,7 +18,7 @@ allprojects {
 
 ```
 dependencies {
-        compile 'com.github.huangdali:SoundWaveLib:v1.2.3'
+        compile 'com.github.jwkj:SoundWaveSender:v1.1'
 }
 ```
 

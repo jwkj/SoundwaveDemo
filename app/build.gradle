@@ -30,5 +30,5 @@ dependencies {
     //日志打印
     compile 'com.github.huangdali:ELog:v1.3.2'
     //声波配网库
-    compile 'com.github.huangdali:SoundWaveLib:v1.2.3'
+    compile 'com.github.jwkj:SoundWaveSender:v1.1'
 }
