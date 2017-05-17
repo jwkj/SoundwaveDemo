@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hdl.elog.ELog;
-import com.jwkj.soundwavedemo.bean.EMTMFInit;
-import com.larksmart.emtmf.jni.EMTMFOptions;
-import com.lsemtmf.genersdk.tools.commen.AlertUtils;
-import com.lsemtmf.genersdk.tools.emtmf.EMTMFSDK;
+import com.jwkj.soundwave.SoundWaveManager;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -17,29 +14,19 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        int errcode = EMTMFSDK.getInstance(this).initSDK(this, EMTMFInit.manufacturer,
-                EMTMFInit.client, EMTMFInit.productModel,
-                EMTMFInit.license);
-        if (errcode == EMTMFOptions.INITSDK_ERRCOE_WIFIDISABLE) {
-
-            ELog.hdl("wifi不可用");
-        } else if (errcode == EMTMFOptions.INITSDK_INVAILDDATA) {
-            AlertUtils.SimpleAlert(this, "SDK初始化的参数非法",
-                    "请检查SDK初始化时传入的参数是否正确~");
-        } else {
-            ELog.hdl("正常。。。。。。。。");
-        }
-        ELog.hdl("errcode=" + errcode);
-
+        boolean isSuccess = SoundWaveManager.init(this);//初始化声波配置
+        ELog.hdl("初始化是否成功...."+ isSuccess);
     }
 
     public void onNext(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    /**
+     * 销毁的时候也要及时销毁
+     */
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        EMTMFSDK.getInstance(this).exitEMTFSDK(this);
+        SoundWaveManager.onDestroy(this);
     }
 }

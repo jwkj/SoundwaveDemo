@@ -26,9 +26,9 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:22.+'
     testCompile 'junit:junit:4.12'
-    compile files('libs/EMTMFSDK_0101_160914.jar')
+
     //日志打印
     compile 'com.github.huangdali:ELog:v1.3.2'
-    //udp发送器（也可以接收的哦）
-    compile 'com.github.huangdali:UDPSender:v1.2.3'
+    //声波配网库
+    compile 'com.github.huangdali:SoundWaveLib:v1.2.3'
 }
