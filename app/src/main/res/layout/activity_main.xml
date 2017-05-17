@@ -42,7 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1000"
-        android:text="29088360"
         android:hint="请输入wifi密码"
         android:padding="5dp" />
 
