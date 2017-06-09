@@ -5,7 +5,7 @@
 **Step 1.** Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
-```
+```java
 allprojects {
     repositories {
         ...
@@ -16,7 +16,7 @@ allprojects {
 
 **Step 2.** Add the dependency
 
-```
+```java
 dependencies {
         compile 'com.github.jwkj:SoundWaveSender:v1.1'
 }
@@ -25,7 +25,7 @@ dependencies {
 ### 忽略文件
 
 添加忽略文件(app/proguard-rules.pro)
-```
+```java
 -libraryjars libs/EMTMFSDK_0101_160914.jar
 -dontwarn com.lsemtmf.**
 -keep class com.lsemtmf.**{*; }
@@ -39,13 +39,13 @@ dependencies {
 
  在发送广播之前需要先初始化，建议在发送广播的前2s之前初始化，所以建议在发送广播的上一个配置页就初始化（见demo）
 
- ```
+ ```java
  SoundWaveManager.init(this);//初始化声波配置
  ```
 
 在初始化页销毁的时候,需要将声波管理器销毁以节省系统资源
 
-```
+```java
    /**
      * 销毁的时候也要及时销毁
      */
@@ -56,7 +56,7 @@ dependencies {
 ```
 #### 发送声波
 
-```
+```java
   SoundWaveSender.getInstance()
                 .with(this)//不要忘记写哦
                 .setWifiSet(wifiSSID, wifiPwd)//wifi名字和wifi密码
@@ -88,7 +88,7 @@ dependencies {
 
 #### 关闭声波发送
 
-```
+```java
 SoundWaveSender.getInstance().stopSend();
 ```
 
