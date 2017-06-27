@@ -92,6 +92,7 @@ dependencies {
 SoundWaveSender.getInstance().stopSend();
 ```
 
+
 此外，为了避免非正常情况退出应用导致未能及时调用stopsend()停止任务，建议在activity/fragment的生命周期销毁的时候也关闭任务
 
 ```java
