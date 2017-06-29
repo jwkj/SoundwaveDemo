@@ -1,5 +1,8 @@
 ## 声波配网demo
 
+>温馨提示：当前1.X版本还不是很稳定，主要是因为使用NIO与设备进行UDP通讯时的一些限制，我们正在积极修复已经出现的问题，近期将会发布2.X版本
+
+
 ### 配置
 
 **Step 1.** Add the JitPack repository to your build file

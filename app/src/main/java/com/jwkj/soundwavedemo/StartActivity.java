@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.hdl.elog.ELog;
 import com.jwkj.soundwave.SoundWaveManager;
+import com.jwkj.soundwavedemo.runtimepermissions.PermissionsManager;
+import com.jwkj.soundwavedemo.runtimepermissions.PermissionsResultAction;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -16,6 +18,20 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         boolean isSuccess = SoundWaveManager.init(this);//初始化声波配置
         ELog.hdl("isSuccess="+ isSuccess);
+        /**
+         * 请求所有必要的权限----
+         */
+        PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
+            @Override
+            public void onGranted() {
+//				Toast.makeText(MainActivity.this, "All permissions have been granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDenied(String permission) {
+                //Toast.makeText(MainActivity.this, "Permission " + permission + " has been denied", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void onNext(View view) {
@@ -28,5 +44,6 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         SoundWaveManager.onDestroy(this);
+        super.onDestroy();
     }
 }

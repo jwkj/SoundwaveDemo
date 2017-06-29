@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:background="#1000"
         android:hint="请输入wifi密码"
+        android:text="29088360"
         android:padding="5dp" />
 
     <Button
