@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private boolean getWifiName() {
-        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         if (wifiManager.isWifiEnabled()) {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             ELog.e("SSID", wifiInfo.getSSID());

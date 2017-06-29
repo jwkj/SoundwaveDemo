@@ -18,7 +18,7 @@ allprojects {
 
 ```java
 dependencies {
-        compile 'com.github.jwkj:SoundWaveSender:v1.1'
+        compile 'com.github.jwkj:SoundWaveSender:v1.1.2'
 }
 ```
 
@@ -119,3 +119,11 @@ SoundWaveSender.getInstance().stopSend();
 - 需要将手机连接到wifi
 
 - 暂不支持5G的wifi
+
+## 版本更新记录
+
+1.1.2
+
+- 【修复】多次调用onNext方法
+
+
