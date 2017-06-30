@@ -1,8 +1,5 @@
 ## 声波配网demo
 
->温馨提示：当前1.X版本还不是很稳定，主要是因为使用NIO与设备进行UDP通讯时的一些限制，我们正在积极修复已经出现的问题，近期将会发布2.X版本
-
-
 ### 配置
 
 **Step 1.** Add the JitPack repository to your build file
@@ -21,7 +18,10 @@ allprojects {
 
 ```java
 dependencies {
-        compile 'com.github.jwkj:SoundWaveSender:v1.1.2'
+      //声波配网库
+      compile 'com.github.jwkj:SoundWaveSender:v2.0.1'
+      //声波配网库说依赖的udp通讯库，不可删除
+      compile 'com.jwkj:udpsender:v2.0.1'
 }
 ```
 
@@ -100,12 +100,13 @@ SoundWaveSender.getInstance().stopSend();
 
 ```java
    /**
-     * 销毁的时候也要及时关闭
+     * 页面停止的时候也要及时关闭
      */
-    @Override
-    protected void onDestroy() {
-        SoundWaveSender.getInstance().stopSend();
-    }
+     @Override
+     protected void onStop() {
+           SoundWaveSender.getInstance().with(this).stopSend();
+           super.onStop();
+     }
 ```
 
 >截图
@@ -124,6 +125,20 @@ SoundWaveSender.getInstance().stopSend();
 - 暂不支持5G的wifi
 
 ## 版本更新记录
+
+### 2.x版
+
+2.0.1
+
+- 【修复】关闭任务还在接收结果
+- 【优化】更换底层库，使用外部引用方式导入，共享主项目依赖文件
+
+> 2.x 相对稳定可用于生产环境,使用方法不变。不建议使用1.x版本，
+
+
+### 1.x版
+
+> 不建议使用1.x版，不太稳定，请使用最新版，使用方法不变
 
 1.1.2
 

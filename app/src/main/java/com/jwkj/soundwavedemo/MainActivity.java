@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onSend(View view) {
+        isNeedSendWave=true;//每次点击发送都要设置为可以继续发送
         wifiPwd = etWifiPwd.getText().toString().trim();//记录密码
         tvLog.append("\n声波发送中....");
         sendSoundWave();
@@ -129,13 +130,13 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void onStop(View view) {
-        SoundWaveSender.getInstance().stopSend();
+    public void onStopSoundWave(View view) {
+        SoundWaveSender.getInstance().with(this).stopSend();
     }
 
     @Override
-    protected void onDestroy() {
-        SoundWaveSender.getInstance().stopSend();
-        super.onDestroy();
+    protected void onStop() {
+        SoundWaveSender.getInstance().with(this).stopSend();
+        super.onStop();
     }
 }

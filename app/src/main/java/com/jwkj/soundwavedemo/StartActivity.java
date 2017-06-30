@@ -17,7 +17,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         boolean isSuccess = SoundWaveManager.init(this);//初始化声波配置
-        ELog.hdl("isSuccess="+ isSuccess);
+        ELog.hdl("isSuccess=" + isSuccess);
         /**
          * 请求所有必要的权限----
          */
