@@ -20,7 +20,7 @@ allprojects {
 dependencies {
       //声波配网库
       compile 'com.github.jwkj:SoundWaveSender:v2.0.1'
-      //声波配网库说依赖的udp通讯库，不可删除
+      //声波配网库所依赖的udp通讯库，不可删除
       compile 'com.jwkj:udpsender:v2.0.1'
 }
 ```
