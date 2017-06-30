@@ -19,7 +19,7 @@ allprojects {
 ```java
 dependencies {
       //声波配网库
-      compile 'com.github.jwkj:SoundWaveSender:v2.0.1'
+      compile 'com.github.jwkj:SoundWaveSender:v2.0.2'
       //声波配网库所依赖的udp通讯库，不可删除
       compile 'com.jwkj:udpsender:v2.0.1'
 }
@@ -127,6 +127,9 @@ SoundWaveSender.getInstance().stopSend();
 ## 版本更新记录
 
 ### 2.x版
+2.0.2
+
+- 【修复】多次发送声波导致不走onNext的bug
 
 2.0.1
 

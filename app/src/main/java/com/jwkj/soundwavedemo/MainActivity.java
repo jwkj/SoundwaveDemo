@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         SoundWaveSender.getInstance().with(this).stopSend();
+        finish();
         super.onStop();
     }
+
 }

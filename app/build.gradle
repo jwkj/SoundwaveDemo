@@ -29,7 +29,7 @@ dependencies {
     //日志打印
     compile 'com.github.huangdali:ELog:v1.3.2'
     //声波配网库
-    compile 'com.github.jwkj:SoundWaveSender:v2.0.1'
+    compile 'com.github.jwkj:SoundWaveSender:v2.0.2'
     //声波配网库说依赖的udp通讯库，不可删除
     compile 'com.jwkj:udpsender:v2.0.1'
 }
