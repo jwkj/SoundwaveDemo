@@ -1,15 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "com.jwkj.soundwavedemo"
-        minSdkVersion 9
-        targetSdkVersion 22
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'arm64-v8a'
+        }
     }
     buildTypes {
         release {
@@ -20,16 +24,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.aar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     testCompile 'junit:junit:4.12'
     //日志打印
     compile 'com.github.huangdali:ELog:v1.3.2'
     //声波配网库
-    compile 'com.github.jwkj:SoundWaveSender:v2.0.2'
+    //compile 'com.github.jwkj:SoundWaveSender:v2.0.2'
     //声波配网库说依赖的udp通讯库，不可删除
     compile 'com.jwkj:udpsender:v2.0.1'
 }
