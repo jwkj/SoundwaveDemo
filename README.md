@@ -126,6 +126,11 @@ SoundWaveSender.getInstance().stopSend();
 
 ## 版本更新记录
 
+### aar版
+soundwave-release.aar
+
+- 【新增】添加64位支持，取消v2.0.2，以soundwave-release.aar的方式依赖
+
 ### 2.x版
 2.0.2
 
